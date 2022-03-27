@@ -62,17 +62,6 @@ impl Vector2
     {
         a.x * b.x + a.y * b.y
     }
-        
-    pub fn scaled (self, f:Vector2) -> Self
-    {
-        Vector2 { x: self.x * f.x, y: self.y * f.y }
-    }
-
-    pub fn scale (&mut self, f:Vector2)
-    {
-        self.x *= f.x;
-        self.y *= f.y;
-    }
     
     pub fn distance (a:Vector2, b:Vector2) -> f64 
     {
@@ -187,6 +176,20 @@ impl Mul<f64> for Vector2
     }
 }
 
+impl Mul<isize> for Vector2
+{
+    type Output = Self;
+
+    fn mul(self, rhs:isize) -> Self::Output
+    {
+        Self
+        {
+            x: self.x * rhs as f64,
+            y: self.y * rhs as f64,
+        }
+    }
+}
+
 impl MulAssign for Vector2
 {
     fn mul_assign(&mut self, rhs: Self)
@@ -202,6 +205,15 @@ impl MulAssign<f64> for Vector2
     {
         self.x = self.x * rhs;
         self.y = self.y * rhs;
+    }
+}
+
+impl MulAssign<isize> for Vector2
+{
+    fn mul_assign(&mut self, rhs:isize)
+    {
+        self.x = self.x * rhs as f64;
+        self.y = self.y * rhs as f64;
     }
 }
 
@@ -233,6 +245,20 @@ impl Div<f64> for Vector2
     }
 }
 
+impl Div<isize> for Vector2
+{
+    type Output = Self;
+
+    fn div(self, rhs:isize) -> Self::Output
+    {
+        Self
+        {
+            x: self.x / rhs as f64,
+            y: self.y / rhs as f64,
+        }
+    }
+}
+
 impl DivAssign for Vector2
 {
     fn div_assign(&mut self, rhs: Self)
@@ -248,6 +274,15 @@ impl DivAssign<f64> for Vector2
     {
         self.x = self.x / rhs;
         self.y = self.y / rhs;
+    }
+}
+
+impl DivAssign<isize> for Vector2
+{
+    fn div_assign(&mut self, rhs:isize)
+    {
+        self.x = self.x / rhs as f64;
+        self.y = self.y / rhs as f64;
     }
 }
 
