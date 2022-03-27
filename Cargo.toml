@@ -3,10 +3,12 @@ name = "lmaths"
 version = "1.0.0"
 edition = "2021"
 license = "MIT"
+license-file = "LICENSE"
+readme = "README"
+documentation = "README"
 description = "A short 2D Maths library"
 homepage = "https://github.com/Carbone13/lmaths"
 repository = "https://github.com/Carbone13/lmaths"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+keywords = ["2d", "maths"]
 
 [dependencies]
