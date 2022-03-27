@@ -4,7 +4,7 @@ pub mod vector2;
 #[cfg(test)]
 mod tests 
 {
-    use crate::Point2;
+    use crate::point2::Point2;
     use crate::vector2::Vector2;
 
     #[test]
