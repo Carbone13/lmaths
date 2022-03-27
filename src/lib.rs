@@ -1,9 +1,6 @@
 pub mod point2;
 pub mod vector2;
 
-use point2::*;
-use vector2::*;
-
 #[cfg(test)]
 mod tests 
 {
