@@ -19,66 +19,75 @@ impl Point2
     pub const MINUS_ONE:Self = Self { x: -1, y:-1 };
     pub const X_UNIT:Self = Self { x: 1, y:0 };
     pub const Y_UNIT:Self = Self { x: 0, y:1 };
-    
+
+    #[inline]
     pub fn new (x:isize, y:isize) -> Self
     {
         Point2 { x, y }
     }
 
+    #[inline]
     pub fn length (self) -> f64
     {
         self.sqr_length().sqrt()
     }
 
+    #[inline]
     pub fn sqr_length (self) -> f64
     {
         (self.x*self.x + self.y*self.y) as f64
     }
 
+    #[inline]
     pub fn dot (a:Point2, b:Point2) -> f64
     {
         (a.x * b.x + a.y * b.y) as f64
     }
 
+    #[inline]
     pub fn scaled (self, f:Point2) -> Self
     {
         Point2 { x: self.x * f.x, y: self.y * f.y }
     }
 
-    pub fn scale (&mut self, f:Point2)
-    {
+    #[inline]
+    pub fn scale (&mut self, f:Point2) {
         self.x *= f.x;
         self.y *= f.y;
     }
 
+    #[inline]
     pub fn distance (a:Point2, b:Point2) -> f64
     {
         (a - b).length()
     }
 
+    #[inline]
     pub fn as_vector2(self) -> Vector2
     {
         Vector2::new(self.x as f64, self.y as f64)
     }
 
+    #[inline]
     pub fn from_vector2 (p:Vector2) -> Self
     {
         Point2 { x: p.x as isize, y:p.y as isize }
     }
 
+    #[inline]
     pub fn from_vec2(v:[f32; 2]) -> Self
     {
         Point2 { x: v[0] as isize, y:v[1] as isize }
     }
 
+    #[inline]
     pub fn to_vec2(self) -> [f32; 2]
     {
         [self.x as f32, self.y as f32]
     }
 }
 
-impl std::fmt::Display for Point2
-{
+impl std::fmt::Display for Point2 {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result
     {
         write!(f, "x:{0} y:{1}", self.x, self.y)

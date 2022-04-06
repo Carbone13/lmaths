@@ -19,31 +19,34 @@ impl Vector2
     pub const MINUS_ONE:Self = Self { x: -1.0, y:-1.0 };
     pub const X_UNIT:Self = Self { x: 1.0, y:0.0 };
     pub const Y_UNIT:Self = Self { x: 0.0, y:1.0 };
-    
+
+    #[inline]
     pub fn new (x:f64, y:f64) -> Self 
     {
         Vector2 { x, y }
     }
-    
+
+    #[inline]
     pub fn length (self) -> f64
     {
         self.sqr_length().sqrt()
     }
-    
+
+    #[inline]
     pub fn sqr_length (self) -> f64
     {
         self.x*self.x + self.y*self.y
     }
-    
-    pub fn normalize (mut self)
-    {
+
+    #[inline]
+    pub fn normalize (mut self) {
         let l:f64 = self.length();
         self.x /= l;
         self.y /= l;
     }
-    
-    pub fn normalized (self) -> Self
-    {
+
+    #[inline]
+    pub fn normalized (self) -> Self {
         let l:f64 = self.length();
         
         if l == 0.0
@@ -57,40 +60,54 @@ impl Vector2
             y: self.y / l,
         }
     }
-    
+
+    #[inline]
     pub fn dot (a:Vector2, b:Vector2) -> f64
     {
         a.x * b.x + a.y * b.y
     }
-    
+
+    #[inline]
     pub fn distance (a:Vector2, b:Vector2) -> f64 
     {
         (a - b).length()
     }
 
+    #[inline]
     pub fn lerp(a:Vector2, b:Vector2, t:f64) -> Self
     {
         a + (b - a) * t
     }
 
+    #[inline]
     pub fn as_point2(self) -> Point2 
     {
         Point2::new(self.x as isize, self.y as isize)
     }
-    
+
+    #[inline]
     pub fn from_point2 (p:Point2) -> Self
     {
         Vector2 { x: p.x as f64, y:p.y as f64 }
     }
-    
+
+    #[inline]
     pub fn from_vec2(v:[f32; 2]) -> Self 
     {
         Vector2 { x: v[0] as f64, y:v[1] as f64 }
     }
 
+    #[inline]
     pub fn to_vec2(self) -> [f32; 2] 
     {
         [self.x as f32, self.y as f32]
+    }
+
+    #[inline]
+    pub fn triple_product<S>(a:Vector2, b:Vector2, c:Vector2) -> Vector2 {
+        let ac = a.x * c.x + a.y * c.y;
+        let bc = b.x * c.x + b.y * c.y;
+        Vector2::new(b.x * ac - a.x * bc, b.y * ac - a.y * bc)
     }
 }
 
