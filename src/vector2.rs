@@ -62,9 +62,9 @@ impl Vector2
     }
 
     #[inline]
-    pub fn dot (a:Vector2, b:Vector2) -> f64
+    pub fn dot (self, b:Vector2) -> f64
     {
-        a.x * b.x + a.y * b.y
+        self.x * b.x + self.y * b.y
     }
 
     #[inline]
@@ -102,13 +102,19 @@ impl Vector2
     {
         [self.x as f32, self.y as f32]
     }
+}
 
-    #[inline]
-    pub fn triple_product<S>(a:Vector2, b:Vector2, c:Vector2) -> Vector2 {
-        let ac = a.x * c.x + a.y * c.y;
-        let bc = b.x * c.x + b.y * c.y;
-        Vector2::new(b.x * ac - a.x * bc, b.y * ac - a.y * bc)
-    }
+#[inline]
+pub fn dot (a:Vector2, b:Vector2) -> f64
+{
+    a.x * b.x + a.y * b.y
+}
+
+#[inline]
+pub fn triple_product(a:Vector2, b:Vector2, c:Vector2) -> Vector2 {
+    let ac = a.x * c.x + a.y * c.y;
+    let bc = b.x * c.x + b.y * c.y;
+    Vector2::new(b.x * ac - a.x * bc, b.y * ac - a.y * bc)
 }
 
 impl std::fmt::Display for Vector2
